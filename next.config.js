@@ -9,7 +9,7 @@ const withTM = require('next-transpile-modules')([
 ])
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+  enabled: process.env.ANALYZE === 'false',
 })
 let config
 
@@ -21,7 +21,7 @@ config = withTM({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     })
-    if (!isServer) config.resolve.fallback.fs = false
+    if (!isServer) config.resolve.fallback.fs = true
     return config
   },
 
